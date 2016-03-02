@@ -10,7 +10,7 @@ env:
   - PGPORT=5432
   - PGHOST=localhost
 
-before_install:
+before_script:
   - sudo /etc/init.d/postgresql stop
   - sudo apt-get -y remove --purge postgresql-9.1
   - sudo apt-get -y remove --purge postgresql-9.2
@@ -26,8 +26,6 @@ before_install:
   - sudo /etc/init.d/postgresql restart
   - psql --version
   - psql -U postgres -c 'create database "karmasharddb";'
-
-install:
   - composer install
   - php bin/console doctrine:schema:create --env=test
 
