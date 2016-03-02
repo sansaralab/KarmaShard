@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\DBAL\Types\IdentityTypeType;
+use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 
 /**
  * Action
@@ -15,7 +17,7 @@ class Action
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,14 +26,15 @@ class Action
     /**
      * @var int
      *
-     * @ORM\Column(name="identity_type", type="integer")
+     * @ORM\Column(name="identity_type", type="IdentityTypeType", nullable=false)
+     * @DoctrineAssert\Enum(entity="AppBundle\DBAL\Types\IdentityTypeType")
      */
     private $identityType;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="person_id", type="text")
+     * @ORM\Column(name="person_id", type="text", nullable=false)
      */
     private $personId;
 
@@ -51,14 +54,14 @@ class Action
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
-    private $date;
+    private $date = 'CURRENT_TIMESTAMP';
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sender", type="text")
+     * @ORM\Column(name="sender", type="text", nullable=false)
      */
     private $sender;
 
@@ -72,9 +75,9 @@ class Action
     /**
      * @var bool
      *
-     * @ORM\Column(name="cancelled", type="boolean")
+     * @ORM\Column(name="cancelled", type="boolean", nullable=false)
      */
-    private $cancelled;
+    private $cancelled = false;
 
     /**
      * Get id

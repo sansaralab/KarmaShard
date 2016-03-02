@@ -25,14 +25,14 @@ class ActionCategory
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", unique=true)
+     * @ORM\Column(name="name", type="text", unique=true, nullable=false)
      */
     private $name;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="weight", type="integer")
+     * @ORM\Column(name="weight", type="integer", nullable=false)
      */
     private $weight;
 
