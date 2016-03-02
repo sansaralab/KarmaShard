@@ -9,8 +9,8 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database karmashard;' -U postgres
   - composer install
+  - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
 
 script:
