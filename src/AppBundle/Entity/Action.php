@@ -17,7 +17,7 @@ class Action
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="guid")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -56,7 +56,7 @@ class Action
      *
      * @ORM\Column(name="date", type="datetime", nullable=false)
      */
-    private $date = 'CURRENT_TIMESTAMP';
+    private $date;
 
     /**
      * @var string
@@ -82,7 +82,7 @@ class Action
     /**
      * Get id
      *
-     * @return guid
+     * @return integer
      */
     public function getId()
     {
