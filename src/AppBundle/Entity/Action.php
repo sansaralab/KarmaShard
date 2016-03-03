@@ -24,7 +24,7 @@ class Action
     private $id;
 
     /**
-     * @var int
+     * @var IdentityTypeType
      *
      * @ORM\Column(name="identity_type", type="IdentityTypeType", nullable=false)
      * @DoctrineAssert\Enum(entity="AppBundle\DBAL\Types\IdentityTypeType")
@@ -82,7 +82,7 @@ class Action
     /**
      * Get id
      *
-     * @return integer
+     * @return guid
      */
     public function getId()
     {
@@ -92,7 +92,7 @@ class Action
     /**
      * Set identityType
      *
-     * @param integer $identityType
+     * @param IdentityTypeType $identityType
      *
      * @return Action
      */
@@ -106,7 +106,7 @@ class Action
     /**
      * Get identityType
      *
-     * @return integer
+     * @return IdentityTypeType
      */
     public function getIdentityType()
     {
@@ -264,7 +264,7 @@ class Action
      *
      * @return Action
      */
-    public function setCategory(\AppBundle\Entity\ActionCategory $category = null)
+    public function setCategory(\AppBundle\Entity\ActionCategory $category)
     {
         $this->category = $category;
 
