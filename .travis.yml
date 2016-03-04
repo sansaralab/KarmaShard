@@ -22,4 +22,4 @@ before_script:
   - php bin/console doctrine:schema:create --env=test
 
 script:
-  - phpunit --coverage-clover
+  - phpunit
