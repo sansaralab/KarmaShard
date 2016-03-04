@@ -2,7 +2,7 @@
 
 namespace Tests\AppBundle\Services;
 
-use AppBundle\Contracts\ActionsServiceContract;
+use AppBundle\Interfaces\ActionsServiceInterface;
 use AppBundle\DBAL\Types\IdentityTypeType;
 use AppBundle\Entity\Action;
 use AppBundle\Entity\ActionCategory;
@@ -27,13 +27,13 @@ class ActionsServiceTest extends KernelTestCase
     }
 
     /**
-     * Testing that actions service in container is instanceof ActionsServiceContract
+     * Testing that actions service in container is instanceof ActionsServiceInterface
      */
     public function testActionsServiceDefinition()
     {
         $actions = $this->container->get('actions');
 
-        $isTrueInstance = $actions instanceof ActionsServiceContract;
+        $isTrueInstance = $actions instanceof ActionsServiceInterface;
 
         $this->assertEquals(true, $isTrueInstance);
     }

@@ -2,13 +2,13 @@
 
 namespace AppBundle\Services;
 
-use AppBundle\Contracts\ActionsServiceContract;
+use AppBundle\Interfaces\ActionsServiceInterface;
 use AppBundle\DBAL\Types\IdentityTypeType;
 use AppBundle\Entity\Action;
 use AppBundle\Entity\ActionCategory;
 use Doctrine\ORM\EntityManager;
 
-class ActionsService implements ActionsServiceContract
+class ActionsService implements ActionsServiceInterface
 {
     /**
      * @var EntityManager

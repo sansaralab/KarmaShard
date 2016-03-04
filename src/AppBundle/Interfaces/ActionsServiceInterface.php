@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\Contracts;
+namespace AppBundle\Interfaces;
 
 use AppBundle\Entity\ActionCategory;
 
-interface ActionsServiceContract
+interface ActionsServiceInterface
 {
     /**
      * @param string $personId
