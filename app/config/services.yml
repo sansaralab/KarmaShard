@@ -7,3 +7,6 @@ services:
     actions:
         class: AppBundle\Services\ActionsService
         arguments: ["@doctrine.orm.entity_manager"]
+    karma:
+        class: AppBundle\Services\KarmaService
+        arguments: ["@actions"]
