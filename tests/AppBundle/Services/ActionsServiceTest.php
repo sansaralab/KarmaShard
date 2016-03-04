@@ -6,15 +6,32 @@ use AppBundle\Contracts\ActionsServiceContract;
 use AppBundle\DBAL\Types\IdentityTypeType;
 use AppBundle\Entity\Action;
 use AppBundle\Entity\ActionCategory;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class ActionsServiceTest extends WebTestCase
+class ActionsServiceTest extends KernelTestCase
 {
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp()
+    {
+        self::bootKernel();
+
+        $this->container = static::$kernel->getContainer();
+    }
+
+    /**
+     * Testing that actions service in container is instanceof ActionsServiceContract
+     */
     public function testActionsServiceDefinition()
     {
-        $client = static::createClient();
-        $container = $client->getContainer();
-        $actions = $container->get('actions');
+        $actions = $this->container->get('actions');
 
         $isTrueInstance = $actions instanceof ActionsServiceContract;
 
@@ -29,10 +46,8 @@ class ActionsServiceTest extends WebTestCase
      */
     public function testPostAction()
     {
-        $client = static::createClient();
-        $container = $client->getContainer();
-        $em = $container->get('doctrine.orm.entity_manager');
-        $actions = $container->get('actions');
+        $em = $this->container->get('doctrine.orm.entity_manager');
+        $actions = $this->container->get('actions');
         $actionCategory = new ActionCategory();
         $actionCategory->setName('test_action');
         $actionCategory->setWeight('5');
