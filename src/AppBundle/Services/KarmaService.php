@@ -45,7 +45,7 @@ class KarmaService implements KarmaServiceInterface
      * @param Action[] $actions
      * @return PersonSummary
      */
-    protected function calculateKarma(array $actions)
+    protected function calculateKarma(array $actions) : PersonSummary
     {
         $summary = new PersonSummary();
         $summary->karma = 5;
