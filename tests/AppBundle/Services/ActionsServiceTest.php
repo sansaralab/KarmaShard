@@ -46,13 +46,12 @@ class ActionsServiceTest extends KernelTestCase
      */
     public function testPostAction()
     {
-        $em = $this->container->get('doctrine.orm.entity_manager');
         $actions = $this->container->get('actions');
-        $actionCategory = new ActionCategory();
-        $actionCategory->setName('test_action');
-        $actionCategory->setWeight('5');
-        $em->persist($actionCategory);
-        $em->flush();
+        $actionCategory = $actions->createCategory('test_category', 5);
+
+        $this->assertNotNull($actionCategory);
+        $this->assertEquals('test_category', $actionCategory->getName());
+        $this->assertEquals(5, $actionCategory->getWeight());
 
         $postResult = $actions->postAction(
             'test_person_id@email.tld',
@@ -70,5 +69,36 @@ class ActionsServiceTest extends KernelTestCase
         );
 
         $this->assertEquals(1, count($allActions));
+    }
+
+    public function testDeleteCategory()
+    {
+        $actions = $this->container->get('actions');
+
+        $oneCategory = $actions->createCategory('some_category', 1);
+
+        $this->assertNotNull($oneCategory);
+
+        $deletionResult = $actions->deleteCategory('some_category');
+
+        $this->assertEquals(true, $deletionResult);
+
+        $twoCategory = $actions->createCategory('another_category', 1);
+
+        $this->assertNotNull($twoCategory);
+
+        $someActionResult = $actions->postAction(
+            'some_person@email.tld',
+            IdentityTypeType::EMAIL,
+            $twoCategory,
+            null,
+            'some_sender'
+        );
+
+        $this->assertEquals(true, $someActionResult);
+
+        $cantDelete = $actions->deleteCategory('another_category');
+
+        $this->assertEquals(false, $cantDelete);
     }
 }

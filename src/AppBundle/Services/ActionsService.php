@@ -69,4 +69,63 @@ class ActionsService implements ActionsServiceInterface
 
         return $result;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAvailableCategories() : array
+    {
+        $categories = $this->em->getRepository('AppBundle:ActionCategory')->findAll();
+
+        return $categories;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createCategory(string $name, int $weight) : ActionCategory
+    {
+        $category = new ActionCategory();
+        $category->setName($name);
+        $category->setWeight($weight);
+
+        try {
+            $this->em->persist($category);
+            $this->em->flush();
+        } catch (\Exception $ex) {
+            // TODO: Log error
+
+            return null;
+        }
+
+        return $category;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteCategory(string $name) : bool
+    {
+        /*
+         * Yes, 2 queries, but this is simple.
+         */
+        $category = $this->em->getRepository('AppBundle:ActionCategory')
+            ->findOneBy(['name' => $name]);
+
+        /*
+         * If there is no category than we also got a point
+         */
+        if (is_null($category)) {
+            return true;
+        }
+
+        try {
+            $this->em->remove($category);
+            $this->em->flush();
+        } catch (\Exception $ex) {
+            return false;
+        }
+
+        return true;
+    }
 }
