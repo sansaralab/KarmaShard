@@ -40,15 +40,42 @@ class KarmaService implements KarmaServiceInterface
     }
 
     /**
-     * TODO: Implement me!
-     *
      * @param Action[] $actions
      * @return PersonSummary
      */
     protected function calculateKarma(array $actions) : PersonSummary
     {
         $summary = new PersonSummary();
-        $summary->karma = 5;
+        $positives = 0;
+        $negatives = 0;
+
+        foreach ($actions as $action) {
+            $weight = $action->getCategory()->getWeight();
+
+            if ($weight > 0) {
+                $positives += $weight;
+            } elseif ($weight < 0) {
+                $negatives += $weight;
+            }
+        }
+
+        if ($negatives < 0) {
+            $negatives *= -1;
+        }
+
+        $max = max($positives, $negatives);
+        $min = min($positives, $negatives);
+
+        $maxPart = 10 / $max;
+        $minPart = $min * $maxPart;
+
+        if ($max === $positives) {
+            $result = 10 - $minPart;
+        } else {
+            $result = -10 + $minPart;
+        }
+
+        $summary->karma = $result;
 
         return $summary;
     }
