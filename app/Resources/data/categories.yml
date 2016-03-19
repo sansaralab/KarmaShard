@@ -1,0 +1,3 @@
+categories:
+  - { name: user_registered, weight: 0 }
+  - { name: user_made_payment, weight: 7}
