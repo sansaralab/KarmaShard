@@ -22,4 +22,4 @@ Main function of KarmaShard is calculating abstract person's 'karma'.
 
 ## About karma
 
-Karma is, in primitive, sum of weight of all actions. And can be used for making decision about client care.
+Karma is, in primitive, avg of weight of all actions. And can be used for making decision about client care.
