@@ -9,4 +9,4 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
     karma:
         class: AppBundle\Services\KarmaService
-        arguments: ["@actions"]
+        arguments: ["@actions", "@doctrine.orm.entity_manager"]

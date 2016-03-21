@@ -46,4 +46,13 @@ class KarmaServiceTest extends KernelTestCase
         $this->assertEquals(IdentityTypeType::EMAIL, $nonexistentKarma->personIdType);
         $this->assertEquals(null, $nonexistentKarma->karma);
     }
+
+    public function testCalculateNullKarma()
+    {
+        $karma = $this->container->get('karma');
+
+        $summary = $karma->getPersonKarma('nonexistentuser', 'trashidentity');
+
+        $this->assertEquals(0, $summary->karma);
+    }
 }

@@ -32,7 +32,7 @@ class ActionCategory
     /**
      * @var int
      *
-     * @ORM\Column(name="weight", type="integer", nullable=false)
+     * @ORM\Column(name="weight", type="float", nullable=false)
      */
     private $weight;
 
