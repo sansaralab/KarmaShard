@@ -45,6 +45,8 @@ class KarmaService implements KarmaServiceInterface
      */
     protected function calculateKarma(array $actions) : PersonSummary
     {
+        // crap here...
+
         $summary = new PersonSummary();
         $positives = 0;
         $negatives = 0;
