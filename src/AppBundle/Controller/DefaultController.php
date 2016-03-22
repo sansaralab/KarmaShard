@@ -14,7 +14,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         return $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')
-            ? $this->redirectToRoute('app_admin_index')
+            ? $this->redirectToRoute('admin_default_index')
             : $this->redirectToRoute('fos_user_security_login');
     }
 }

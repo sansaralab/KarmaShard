@@ -36,3 +36,6 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # TODO: change it to ROLE_ADMIN when it will be possible
+        - { path: ^/admin, role: ROLE_USER }

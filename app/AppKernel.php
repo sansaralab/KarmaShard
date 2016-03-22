@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new AppBundle\AppBundle(),
+            new AdminBundle\AdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
