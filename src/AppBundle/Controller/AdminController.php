@@ -9,6 +9,7 @@ class AdminController extends Controller
 {
     /**
      * @Route("/admin")
+     * @Route("/admin/{slug}", requirements={"slug"=".*"})
      */
     public function indexAction()
     {
