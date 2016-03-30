@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sansara Lab | Project Karma Admin</title>
+
+    {% stylesheets
+        '@AdminBundle/Resources/public/bower/foundation-sites/dist/foundation.css'
+        '@AdminBundle/Resources/public/bower/foundation-icon-fonts/foundation-icons.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="row column">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <li class="menu-text">Karma</li>
+                <li><a href="{{ path('admin_default_index') }}">Dashboard</a></li>
+                <li><a href="{{ path('admin_api_index') }}">API</a></li>
+                <li><a href="#">Statistics</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row column">
+    {% block body %}{% endblock %}
+</div>
+
+{% javascripts
+    '@AdminBundle/Resources/public/bower/jquery/dist/jquery.js'
+    '@AdminBundle/Resources/public/bower/what-input/what-input.js'
+    '@AdminBundle/Resources/public/bower/foundation-sites/dist/foundation.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script>
+    $(document).foundation();
+</script>
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

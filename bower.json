@@ -1,0 +1,16 @@
+{
+  "name": "KarmaShard",
+  "homepage": "https://github.com/sansaralab/KarmaShard",
+  "authors": [
+    "Enapiuz <enapiuz@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "foundation-sites": "^6.2.0",
+    "foundation-icon-fonts": "*"
+  }
+}

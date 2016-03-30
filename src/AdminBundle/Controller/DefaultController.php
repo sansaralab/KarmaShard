@@ -9,7 +9,6 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/")
-     * @Route("/{slug}", requirements={"slug"=".*"})
      */
     public function indexAction()
     {
