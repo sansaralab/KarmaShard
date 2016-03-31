@@ -128,4 +128,12 @@ class ActionsService implements ActionsServiceInterface
 
         return true;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAllCategories() : array
+    {
+        return $this->em->getRepository('AppBundle:ActionCategory')->findAll();
+    }
 }

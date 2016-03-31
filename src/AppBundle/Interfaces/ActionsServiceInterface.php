@@ -57,4 +57,11 @@ interface ActionsServiceInterface
      * @return bool
      */
     public function deleteCategory(string $name) : bool;
+
+    /**
+     * Returns all categories
+     *
+     * @return ActionCategory[]
+     */
+    public function getAllCategories() : array;
 }

@@ -1,0 +1,30 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block body %}
+    <div class="row column">
+        <h1>Categories</h1>
+
+        <table class="stack">
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Weight</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr class="primary">
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.weight }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row column text-right">
+        <div class="button">Add</div>
+    </div>
+{% endblock %}
