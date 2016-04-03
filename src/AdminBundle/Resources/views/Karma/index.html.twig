@@ -19,7 +19,7 @@
             </div>
 
             <div class="column">
-                <input name="query" type="text" value="{{ query }}">
+                <input name="query" type="text" value="{{ query }}" placeholder="Type identity and press Enter...">
             </div>
         </form>
 
@@ -28,7 +28,18 @@
 
     {% if result %}
         <div class="row column">
-            nothing found
+            <p>
+                <b>Id:</b>
+                {{ result.personId }}
+            </p>
+            <p>
+                <b>Type:</b>
+                {{ result.personIdType }}
+            </p>
+            <p>
+                <b>Karma:</b>
+                {{ result.karma }}
+            </p>
         </div>
     {% endif %}
 
