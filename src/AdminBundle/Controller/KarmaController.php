@@ -17,7 +17,7 @@ class KarmaController extends Controller
         // TODO: cahnge it to get all of the variants from database
         $identityTypes = IdentityTypeType::getChoices();
         $query = $request->query->get('query', '');
-        $selectedIdentityType = $request->query->get('identity_type', '');
+        $selectedIdentityType = $request->query->get('identity_type', IdentityTypeType::EMAIL);
         $result = null;
         
         return $this->render('AdminBundle:Karma:index.html.twig', array(
