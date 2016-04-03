@@ -30,7 +30,7 @@ class KarmaController extends Controller
             $karma = $this->get('karma');
             $result = $karma->getPersonKarma($query, $selectedIdentityType);
         }
-        
+
         return $this->render('AdminBundle:Karma:index.html.twig', array(
             'query' => $query,
             'identity_types' => $identityTypes,
