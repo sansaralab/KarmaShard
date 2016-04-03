@@ -1,0 +1,35 @@
+{% extends "@Admin/base.html.twig" %}
+
+{% block body %}
+    <br>
+
+    <div class="row column">
+        <form action="" method="get">
+            <div class="column text-center">
+                {% for identity_key, identity_type in identity_types %}
+                    <input type="radio"
+                           name="identity_type"
+                           value="{{ identity_type }}"
+                           id="it_{{ identity_type }}"
+                           required
+                           {% if identity_type == selected_identity_type %} checked {% endif %}
+                    >
+                    <label for="it_{{ identity_type }}">{{ identity_key }}</label>
+                {% endfor %}
+            </div>
+
+            <div class="column">
+                <input name="query" type="text" value="{{ query }}">
+            </div>
+        </form>
+
+        <hr>
+    </div>
+
+    {% if result %}
+        <div class="row column">
+            nothing found
+        </div>
+    {% endif %}
+
+{% endblock %}
